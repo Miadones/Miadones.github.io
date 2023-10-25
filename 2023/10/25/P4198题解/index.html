@@ -1,0 +1,330 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+	<link rel="bookmark"  type="image/x-icon"  href="/img/logo_miccall.png"/>
+	<link rel="shortcut icon" href="/img/logo_miccall.png">
+	
+			    <title>
+    Miadones' Home Page
+    </title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+    <link rel="stylesheet" href="/css/mic_main.css" />
+    <link rel="stylesheet" href="/css/dropdownMenu.css" />
+    <meta name="keywords" content="miccall" />
+    
+    	<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+	 
+    <noscript>
+        <link rel="stylesheet" href="/css/noscript.css" />
+    </noscript>
+    <style type="text/css">
+        body:before {
+          content: ' ';
+          position: fixed;
+          top: 0;
+          background: url('/img/bg.jpg') center 0 no-repeat;
+          right: 0;
+          bottom: 0;
+          left: 0;
+          background-size: cover; 
+        }
+    </style>
+
+			    
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script async type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
+
+    <script src="/js/jquery.min.js"></script>
+    <script src="/js/jquery.scrollex.min.js"></script>
+    <script src="/js/jquery.scrolly.min.js"></script>
+    <script src="/js/skel.min.js"></script>
+    <script src="/js/util.js"></script>
+    <script src="/js/main.js"></script>
+	
+<meta name="generator" content="Hexo 6.3.0"></head>
+    
+		
+<!-- Layouts -->
+
+
+
+<!--  代码渲染  -->
+<link rel="stylesheet" href="/css/prism_coy.css" />
+<link rel="stylesheet" href="/css/typo.css" />
+<!-- 文章页 -->
+<body class="is-loading">
+    <!-- Wrapper 外包 s-->
+    <div id="wrapper" class="fade-in">
+        <!-- Intro 头部显示 s -->
+        <!-- Intro 头部显示 e -->
+        <!-- Header 头部logo start -->
+        <header id="header">
+    <a href="/" class="logo">Tap to top.</a>
+</header>
+        <!-- Nav 导航条 start -->
+        <nav id="nav" class="special" >
+            <ul class="menu links" >
+			<!-- Homepage  主页  --> 
+			<li >
+	            <a href="/" rel="nofollow">主页</a>
+	        </li>
+			<!-- categories_name  分类   --> 
+	        
+	        <li class="active">
+	            <a href="#s1">分类</a>
+	                    <ul class="submenu">
+	                        <li>
+	                        
+	                    </ul>
+	        </li>
+	        
+	        <!-- archives  归档   --> 
+	        
+	        
+		        <!-- Pages 自定义   -->
+		        
+		        <li>
+		            <a href="/about/" title="简历">
+		                简历
+		            </a>
+		        </li>
+		        
+		        <li>
+		            <a href="/group/" title="团队">
+		                团队
+		            </a>
+		        </li>
+		        
+		        <li>
+		            <a href="/gallery/" title="图库">
+		                图库
+		            </a>
+		        </li>
+		        
+		        <li>
+		            <a href="/tag/" title="标签">
+		                标签
+		            </a>
+		        </li>
+		        
+
+
+            </ul>
+            <!-- icons 图标   -->
+			<ul class="icons">
+                    
+                    <li>
+                        <a title="github" href="https://github.com/miadones" target="_blank" rel="noopener">
+                            <i class="icon fa fa-github"></i>
+                        </a>
+                    </li>
+                    
+                    <li>
+                        <a title="500px" href="http://500px.com" target="_blank" rel="noopener">
+                            <i class="icon fa fa-500px"></i>
+                        </a>
+                    </li>
+                    
+			</ul>
+</nav>
+
+        <div id="main" >
+            <div class ="post_page_title_img" style="height: 25rem;background-image: url();background-position: center; background-repeat:no-repeat; background-size:cover;-moz-background-size:cover;overflow:hidden;" >
+                <a href="#" style="padding: 4rem 4rem 2rem 4rem ;"><h2 >P4198题解</h2></a>
+            </div>
+            <!-- Post -->
+            <div class="typo" style="padding: 3rem;">
+                <p>[TOC]</p>
+<h1 id="p4198-楼房重建re题解再改造"><a class="markdownIt-Anchor" href="#p4198-楼房重建re题解再改造">#</a> P4198 楼房重建 (RE: 题解再改造！！)</h1>
+<h3 id="码"><a class="markdownIt-Anchor" href="#码">#</a> 码</h3>
+<pre><code class="language-c++">#include&lt;bits/stdc++.h&gt;
+#define MAXN 2000010
+using namespace std;
+int n,m;
+int x[MAXN],y[MAXN],ans[MAXN];
+double K[MAXN];
+int query(int p,int l,int r,double maxn)&#123;
+	if(K[p]&lt;=maxn) return 0;
+	if(l==r) return K[p]&gt;maxn;
+	else if(K[p*2]&lt;=maxn) return query(p*2+1,((l+r)&gt;&gt;1)+1,r,maxn);
+	return query(p*2,l,(l+r)&gt;&gt;1,maxn)+ans[p]-ans[p*2];
+&#125;
+void Change(int p,int l,int r,int limit,double v)&#123;
+	if(l==limit&amp;&amp;limit==r)&#123;
+		ans[p]=1,K[p]=v;
+		return ;
+	&#125;
+	int mid=(l+r)&gt;&gt;1;
+	if(limit&lt;=mid) Change(p*2,l,mid,limit,v);
+	else Change(p*2+1,mid+1,r,limit,v);
+	K[p]=max(K[p*2],K[p*2+1]);
+	ans[p]=ans[p*2]+query(p*2+1,mid+1,r,K[p*2]);
+&#125;
+int main()&#123;
+	ios::sync_with_stdio(0);
+	cin&gt;&gt;n&gt;&gt;m;
+	for(int i=1;i&lt;=m;i++)&#123;
+		cin&gt;&gt;x[i]&gt;&gt;y[i];
+		Change(1,1,n,x[i],(double)y[i]/x[i]);
+		cout&lt;&lt;ans[1]&lt;&lt;&quot;\n&quot;;
+	&#125;
+	return 0;
+&#125; 
+</code></pre>
+<h3 id="正文"><a class="markdownIt-Anchor" href="#正文">#</a> 正文</h3>
+<blockquote>
+<ol>
+<li>对于某栋楼的高度的修改：单点修改</li>
+<li>对于从零开始的可视个数：区间查询</li>
+</ol>
+</blockquote>
+<p>所以可以将此题转化成<strong>线段树</strong></p>
+<p>每一个叶子节点：最大值为该点斜率，可视个数为 1</p>
+<p>仅用检查是否大于查询的 maxn (斜率值) 即可</p>
+<pre><code class="language-c++">if(l==r) return K[p]&gt;maxn;
+</code></pre>
+<p>右区间:</p>
+<ol>
+<li>右区间的左子区间的最大值
+<ol>
+<li>小于左区间最大值：右的左子区间一定不可见，递归右区间的左子节点.</li>
+<li>大于左区间最大值：加上右区间答案，递归右区间的左子区间.<strong> 右区间的左子区间可能覆盖右子区间</strong></li>
+</ol>
+</li>
+</ol>
+<p><sub>赞美一些动开线段树</sub></p>
+<pre><code class="language-c++">ans[p]=ans[p*2]+query(p*2+1,mid+1,r,ma[p*2]);
+</code></pre>
+<p>区间答案即为左区间的答案 + 右区间斜率合法的所有楼房数.</p>
+<p>对于每一个区间存储最大值可以使 query 的效率大大优化，<s> 玄学优化</s></p>
+<h3 id="致谢"><a class="markdownIt-Anchor" href="#致谢">#</a> 致谢</h3>
+<p><a target="_blank" rel="noopener" href="https://www.luogu.com.cn/user/57014"><img src="/.com//57014.png" alt></a></p>
+<p><em><strong>Nemlit 大佬 %%%</strong></em></p>
+
+            </div>
+
+            <!-- Post Comments -->
+            
+    <!-- 使用 DISQUS_CLICK -->
+<div id="disqus-comment">
+    <div id="disqus_thread"></div>
+
+<!-- add animation -->
+<style>
+	.disqus_click_btn {
+            line-height: 30px;
+            margin: 0;
+            min-width: 50px;
+            padding: 0 14px;
+            display: inline-block;
+            font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+            font-size: 14px;
+            font-weight: 400;
+            text-transform: uppercase;
+            letter-spacing: 0;
+            overflow: hidden;
+            will-change: box-shadow;
+            transition: box-shadow .2s cubic-bezier(.4, 0, 1, 1), background-color .2s cubic-bezier(.4, 0, .2, 1), color .2s cubic-bezier(.4, 0, .2, 1);
+            outline: 0;
+            cursor: pointer;
+            text-decoration: none;
+            text-align: center;
+            vertical-align: middle;
+            border: 0;
+            background: rgba(158, 158, 158, .2);
+            box-shadow: 0 2px 2px 0 rgba(0, 0, 0, .14), 0 3px 1px -2px rgba(0, 0, 0, .2), 0 1px 5px 0 rgba(0, 0, 0, .12);
+            color: #fff;
+            background-color: #7EC0EE;
+            text-shadow: 0
+        }
+</style>
+	
+<div class="btn_click_load" id="disqus_bt"> 
+    <button class="disqus_click_btn">点击查看评论</button>
+</div>
+
+<!--
+<script type="text/javascript">
+$('.btn_click_load').click(function() {
+    /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+    var disqus_shortname = 'http-miccall-tech'; // required: replace example with your forum shortname
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+
+    document.getElementById('disqus_bt').style.display = "none";
+});
+</script>
+-->
+<script type="text/javascript">
+    var disqus_config = function () {
+        this.page.url = 'http://example.com/2023/10/25/P4198%E9%A2%98%E8%A7%A3/';  // Replace PAGE_URL with your page's canonical URL variable
+        this.page.identifier = 'http://example.com/2023/10/25/P4198%E9%A2%98%E8%A7%A3/'; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+    };
+</script>
+
+<script type="text/javascript">
+    $('.btn_click_load').click(function() {  //click to load comments
+        (function() { // DON'T EDIT BELOW THIS LINE
+            var d = document;
+            var s = d.createElement('script');
+            s.src = '//http-miccall-tech.disqus.com/embed.js';
+            s.setAttribute('data-timestamp', + new Date());
+            (d.head || d.body).appendChild(s);
+        })();
+        $('.btn_click_load').css('display','none');
+    });
+</script>
+</div>
+<style>
+    #disqus-comment{
+        background-color: #eee;
+        padding: 2pc;
+    }
+</style>
+
+
+        </div>
+        <!-- Copyright 版权 start -->
+                <div id="copyright">
+            <ul>
+                <li>&copy;Powered By <a target="_blank" rel="noopener" href="https://hexo.io/zh-cn/" style="border-bottom: none;">hexo</a></li>
+                <li>Design: <a target="_blank" rel="noopener" href="http://miccall.tech " style="border-bottom: none;">miccall</a></li>
+            </ul>
+            
+                <span id="busuanzi_container_site_pv">本站总访问量<span id="busuanzi_value_site_pv"></span>次</span>
+			
+        </div>
+    </div>
+</body>
+
+
+
+ 	
+</html>
