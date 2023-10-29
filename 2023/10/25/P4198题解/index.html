@@ -10,21 +10,21 @@
     </title>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-    <link rel="stylesheet" href="/css/mic_main.css" />
-    <link rel="stylesheet" href="/css/dropdownMenu.css" />
+    <link rel="stylesheet" href="/project/css/mic_main.css" />
+    <link rel="stylesheet" href="/project/css/dropdownMenu.css" />
     <meta name="keywords" content="miadones" />
     
     	<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
 	 
     <noscript>
-        <link rel="stylesheet" href="/css/noscript.css" />
+        <link rel="stylesheet" href="/project/css/noscript.css" />
     </noscript>
     <style type="text/css">
         body:before {
           content: ' ';
           position: fixed;
           top: 0;
-          background: url('/img/bg.jpg') center 0 no-repeat;
+          background: url('/project/img/bg.jpg') center 0 no-repeat;
           right: 0;
           bottom: 0;
           left: 0;
@@ -56,12 +56,12 @@
   
 
 
-    <script src="/js/jquery.min.js"></script>
-    <script src="/js/jquery.scrollex.min.js"></script>
-    <script src="/js/jquery.scrolly.min.js"></script>
-    <script src="/js/skel.min.js"></script>
-    <script src="/js/util.js"></script>
-    <script src="/js/main.js"></script>
+    <script src="/project/js/jquery.min.js"></script>
+    <script src="/project/js/jquery.scrollex.min.js"></script>
+    <script src="/project/js/jquery.scrolly.min.js"></script>
+    <script src="/project/js/skel.min.js"></script>
+    <script src="/project/js/util.js"></script>
+    <script src="/project/js/main.js"></script>
 	
 <meta name="generator" content="Hexo 6.3.0"></head>
     
@@ -81,14 +81,14 @@
         <!-- Intro 头部显示 e -->
         <!-- Header 头部logo start -->
         <header id="header">
-    <a href="/" class="logo">Tap to top.</a>
+    <a href="/project/" class="logo">Tap to top.</a>
 </header>
         <!-- Nav 导航条 start -->
         <nav id="nav" class="special" >
             <ul class="menu links" >
 			<!-- Homepage  主页  --> 
 			<li >
-	            <a href="/" rel="nofollow">主页</a>
+	            <a href="/project/" rel="nofollow">主页</a>
 	        </li>
 			<!-- categories_name  分类   --> 
 	        
@@ -96,7 +96,7 @@
 	            <a href="#s1">分类</a>
 	                    <ul class="submenu">
 	                        <li>
-	                        <a class="category-link" href="/categories/Algorithm/">Algorithm</a>
+	                        <a class="category-link" href="/project/categories/Algorithm/">Algorithm</a>
 	                    </ul>
 	        </li>
 	        
@@ -159,40 +159,7 @@
                 <p>[TOC]</p>
 <h1 id="p4198-楼房重建re题解再改造"><a class="markdownIt-Anchor" href="#p4198-楼房重建re题解再改造">#</a> P4198 楼房重建 (RE: 题解再改造！！)</h1>
 <h3 id="码"><a class="markdownIt-Anchor" href="#码">#</a> 码</h3>
-<pre><code class="language-c++">#include&lt;bits/stdc++.h&gt;
-#define MAXN 2000010
-using namespace std;
-int n,m;
-int x[MAXN],y[MAXN],ans[MAXN];
-double K[MAXN];
-int query(int p,int l,int r,double maxn)&#123;
-	if(K[p]&lt;=maxn) return 0;
-	if(l==r) return K[p]&gt;maxn;
-	else if(K[p*2]&lt;=maxn) return query(p*2+1,((l+r)&gt;&gt;1)+1,r,maxn);
-	return query(p*2,l,(l+r)&gt;&gt;1,maxn)+ans[p]-ans[p*2];
-&#125;
-void Change(int p,int l,int r,int limit,double v)&#123;
-	if(l==limit&amp;&amp;limit==r)&#123;
-		ans[p]=1,K[p]=v;
-		return ;
-	&#125;
-	int mid=(l+r)&gt;&gt;1;
-	if(limit&lt;=mid) Change(p*2,l,mid,limit,v);
-	else Change(p*2+1,mid+1,r,limit,v);
-	K[p]=max(K[p*2],K[p*2+1]);
-	ans[p]=ans[p*2]+query(p*2+1,mid+1,r,K[p*2]);
-&#125;
-int main()&#123;
-	ios::sync_with_stdio(0);
-	cin&gt;&gt;n&gt;&gt;m;
-	for(int i=1;i&lt;=m;i++)&#123;
-		cin&gt;&gt;x[i]&gt;&gt;y[i];
-		Change(1,1,n,x[i],(double)y[i]/x[i]);
-		cout&lt;&lt;ans[1]&lt;&lt;&quot;\n&quot;;
-	&#125;
-	return 0;
-&#125; 
-</code></pre>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> MAXN 2000010</span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="type">int</span> n,m;</span><br><span class="line"><span class="type">int</span> x[MAXN],y[MAXN],ans[MAXN];</span><br><span class="line"><span class="type">double</span> K[MAXN];</span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">query</span><span class="params">(<span class="type">int</span> p,<span class="type">int</span> l,<span class="type">int</span> r,<span class="type">double</span> maxn)</span></span>&#123;</span><br><span class="line">	<span class="keyword">if</span>(K[p]&lt;=maxn) <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">	<span class="keyword">if</span>(l==r) <span class="keyword">return</span> K[p]&gt;maxn;</span><br><span class="line">	<span class="keyword">else</span> <span class="keyword">if</span>(K[p*<span class="number">2</span>]&lt;=maxn) <span class="keyword">return</span> <span class="built_in">query</span>(p*<span class="number">2</span>+<span class="number">1</span>,((l+r)&gt;&gt;<span class="number">1</span>)+<span class="number">1</span>,r,maxn);</span><br><span class="line">	<span class="keyword">return</span> <span class="built_in">query</span>(p*<span class="number">2</span>,l,(l+r)&gt;&gt;<span class="number">1</span>,maxn)+ans[p]-ans[p*<span class="number">2</span>];</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">Change</span><span class="params">(<span class="type">int</span> p,<span class="type">int</span> l,<span class="type">int</span> r,<span class="type">int</span> limit,<span class="type">double</span> v)</span></span>&#123;</span><br><span class="line">	<span class="keyword">if</span>(l==limit&amp;&amp;limit==r)&#123;</span><br><span class="line">		ans[p]=<span class="number">1</span>,K[p]=v;</span><br><span class="line">		<span class="keyword">return</span> ;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="type">int</span> mid=(l+r)&gt;&gt;<span class="number">1</span>;</span><br><span class="line">	<span class="keyword">if</span>(limit&lt;=mid) <span class="built_in">Change</span>(p*<span class="number">2</span>,l,mid,limit,v);</span><br><span class="line">	<span class="keyword">else</span> <span class="built_in">Change</span>(p*<span class="number">2</span>+<span class="number">1</span>,mid+<span class="number">1</span>,r,limit,v);</span><br><span class="line">	K[p]=<span class="built_in">max</span>(K[p*<span class="number">2</span>],K[p*<span class="number">2</span>+<span class="number">1</span>]);</span><br><span class="line">	ans[p]=ans[p*<span class="number">2</span>]+<span class="built_in">query</span>(p*<span class="number">2</span>+<span class="number">1</span>,mid+<span class="number">1</span>,r,K[p*<span class="number">2</span>]);</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">	ios::<span class="built_in">sync_with_stdio</span>(<span class="number">0</span>);</span><br><span class="line">	cin&gt;&gt;n&gt;&gt;m;</span><br><span class="line">	<span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">1</span>;i&lt;=m;i++)&#123;</span><br><span class="line">		cin&gt;&gt;x[i]&gt;&gt;y[i];</span><br><span class="line">		<span class="built_in">Change</span>(<span class="number">1</span>,<span class="number">1</span>,n,x[i],(<span class="type">double</span>)y[i]/x[i]);</span><br><span class="line">		cout&lt;&lt;ans[<span class="number">1</span>]&lt;&lt;<span class="string">&quot;\n&quot;</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125; </span><br></pre></td></tr></table></figure>
 <h3 id="正文"><a class="markdownIt-Anchor" href="#正文">#</a> 正文</h3>
 <blockquote>
 <ol>
@@ -203,8 +170,7 @@ int main()&#123;
 <p>所以可以将此题转化成<strong>线段树</strong></p>
 <p>每一个叶子节点：最大值为该点斜率，可视个数为 1</p>
 <p>仅用检查是否大于查询的 maxn (斜率值) 即可</p>
-<pre><code class="language-c++">if(l==r) return K[p]&gt;maxn;
-</code></pre>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span>(l==r) <span class="keyword">return</span> K[p]&gt;maxn;</span><br></pre></td></tr></table></figure>
 <p>右区间:</p>
 <ol>
 <li>右区间的左子区间的最大值
@@ -215,12 +181,11 @@ int main()&#123;
 </li>
 </ol>
 <p><sub>赞美一些动开线段树</sub></p>
-<pre><code class="language-c++">ans[p]=ans[p*2]+query(p*2+1,mid+1,r,ma[p*2]);
-</code></pre>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ans[p]=ans[p*<span class="number">2</span>]+<span class="built_in">query</span>(p*<span class="number">2</span>+<span class="number">1</span>,mid+<span class="number">1</span>,r,ma[p*<span class="number">2</span>]);</span><br></pre></td></tr></table></figure>
 <p>区间答案即为左区间的答案 + 右区间斜率合法的所有楼房数.</p>
 <p>对于每一个区间存储最大值可以使 query 的效率大大优化，<s> 玄学优化</s></p>
 <h3 id="致谢"><a class="markdownIt-Anchor" href="#致谢">#</a> 致谢</h3>
-<p><a target="_blank" rel="noopener" href="https://www.luogu.com.cn/user/57014"><img src="/.com//57014.png" alt></a></p>
+<p><a target="_blank" rel="noopener" href="https://www.luogu.com.cn/user/57014"><img src="/project/.io//57014.png" alt></a></p>
 <p><em><strong>Nemlit 大佬 %%%</strong></em></p>
 
             </div>
@@ -284,8 +249,8 @@ $('.btn_click_load').click(function() {
 -->
 <script type="text/javascript">
     var disqus_config = function () {
-        this.page.url = 'http://example.com/2023/10/25/P4198%E9%A2%98%E8%A7%A3/';  // Replace PAGE_URL with your page's canonical URL variable
-        this.page.identifier = 'http://example.com/2023/10/25/P4198%E9%A2%98%E8%A7%A3/'; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+        this.page.url = 'https://miadones.github.io/project/2023/10/25/P4198%E9%A2%98%E8%A7%A3/';  // Replace PAGE_URL with your page's canonical URL variable
+        this.page.identifier = 'https://miadones.github.io/project/2023/10/25/P4198%E9%A2%98%E8%A7%A3/'; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
     };
 </script>
 
